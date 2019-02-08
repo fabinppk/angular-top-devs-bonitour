@@ -16,6 +16,10 @@ export class DashboardComponent implements OnInit {
     this.getHeroes();
   }
 
+  slugfyName(nome: string) {
+    return nome.replace(/ /g, '-').normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  }
+
   getHeroes(): void {
     this.heroService.getResources()
     .subscribe(heroes => this.heroes = heroes.devs.slice(1, 5));

@@ -23,8 +23,20 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getHero(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getResourceHero(id).subscribe(hero => this.hero = hero);
+    const nome = this.route.snapshot.paramMap.get('nome');
+    this.heroService.getResourceHero(nome).subscribe(hero => {
+      this.hero = hero.dev;
+    });
+  }
+
+  devImage(img){
+    let url_image = "https://d159gdcp8gotlc.cloudfront.net/assets/images/";
+    if(img != null){
+      url_image = url_image + "/usuarios_fotos/" + img;
+    }else{
+      url_image = url_image + "sem_imagem.jpg";
+    }
+    return url_image;
   }
 
   goBack(): void {

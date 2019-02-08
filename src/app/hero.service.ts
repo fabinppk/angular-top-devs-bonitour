@@ -12,13 +12,18 @@ export class HeroService {
 
   constructor(private messageService: MessageService, private http: HttpClient) { }
 
-  getResources(){
-    const apiUrl = "https://api.bonitour.com.br/api/v3/devs";
+  setHeaders() {
     let headers = new HttpHeaders()
     .set("Accept", "application/json")
     .set("Content-Type", "application/json")
     .set("secret_key", "vSMtK8VnNI97RGxrEFM2Dg")
     .set("Authorization", "eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRpQGJvbml0b3VyLmNvbS5iciIsImV4cCI6MTU3OTA5MDg3M30.eyLkJgU6YKSuX5HQjuW3oCfl7GEpkKf_mGlQnVod7bY");
+    return headers;
+  }
+
+  getResources(){
+    const apiUrl = "https://api.bonitour.com.br/api/v3/devs";
+    const headers = this.setHeaders();
     return this.http.get<Hero[]>(apiUrl, {headers});
   }
 
@@ -29,9 +34,12 @@ export class HeroService {
     return of(HEROES);
   }
 
-  getResourceHero(id: number): Observable<Hero> {
-    this.messageService.add(`HeroService: fetched hero id=${id}`);
-    return of(HEROES.find(hero => hero.id === id));
+  getResourceHero(nome: string){
+    const apiUrlDev = `https://api.bonitour.com.br/api/v3/dev/${nome}`;
+    const nomeNoSlug = `${nome}`.replace('-', ' ').toUpperCase();
+    this.messageService.add(`HeroService: fetched ${nomeNoSlug}`);
+    const headers = this.setHeaders();
+    return this.http.get<Hero[]>(apiUrlDev, {headers});
   }
 
   getHero(id: number): Observable<Hero> {

@@ -1,10 +1,10 @@
-<div *ngIf="hero">
-  <h2>{{hero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="hero.name" placeholder="name"/>
-    </label>
+<div *ngIf="hero" class="block-hero">
+  <div class="hero">
+    <h2 class="nome">{{ hero.nome }}</h2>
+    <p class="id">ID: {{hero.id}}</p>
+    <img src="{{ this.devImage(hero.arquivo_assinatura) }}" alt="{{ hero.nome }}">
+    <p class="cargo">{{hero.cargo_descricao }}</p>
+    <p class="email">{{hero.email }}</p>
   </div>
-  <button (click)="goBack()">go back</button>
+  <button (click)="goBack()">Voltar</button>
 </div>
