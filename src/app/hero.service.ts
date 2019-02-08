@@ -28,28 +28,24 @@ export class HeroService {
   }
 
   getHeroes(): Observable<Hero[]> {
-    //this.messageService.clear();
-    //this.messageService.add('HeroService: fetched heroes');
-    console.log("AQUI", HEROES);
     return of(HEROES);
   }
 
   getResourceHero(nome: string){
     const apiUrlDev = `https://api.bonitour.com.br/api/v3/dev/${nome}`;
     const nomeNoSlug = `${nome}`.replace('-', ' ').toUpperCase();
-    this.messageService.add(`HeroService: fetched ${nomeNoSlug}`);
+    this.messageService.add(`Get ${nomeNoSlug}`);
     const headers = this.setHeaders();
     return this.http.get<Hero[]>(apiUrlDev, {headers});
   }
 
   getHero(id: number): Observable<Hero> {
-    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    this.messageService.add(`id=${id}`);
     return of(HEROES.find(hero => hero.id === id));
   }
 
   onSelect(hero): Observable<Hero[]> {
     let msg = 'Clicked on ' + hero.name;
-    //this.messageService.clear();
     this.messageService.add(msg);
     return of(HEROES);
   }

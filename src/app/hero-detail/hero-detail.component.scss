@@ -1,3 +1,5 @@
+@import '../../assets/_variaveis.scss';
+
 .block-hero {
 
   .hero {
@@ -36,11 +38,12 @@
       text-align: center;
     }
   }
-  
+
   button {
     margin-top: 20px;
-    font-family: Arial;
-    background-color: #eee;
+    padding: 5px 10px;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     border: none;
     padding: 5px 10px;
     border-radius: 4px;
@@ -48,7 +51,8 @@
     cursor: hand;
 
     &:hover {
-      background-color: #cfd8dc;
+      background-color: $background-hover;
+      color: $color-hover;
     }
 
     &:disabled {

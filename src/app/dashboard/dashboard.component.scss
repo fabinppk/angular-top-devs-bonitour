@@ -1,65 +1,78 @@
-/* DashboardComponent's private CSS styles */
-[class*='col-'] {
-  float: left;
-  padding-right: 20px;
-  padding-bottom: 20px;
+@import '../../assets/_variaveis.scss';
+
+.top-heroes {
+  margin-top: 50px;
+
+  .grid {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 0;
+
+    > * {
+      flex: 0 0 25%;
+      max-width: calc(25% - 20px);
+      margin: 0 20px 20px 0;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+
+    .module {
+      padding: 20px;
+      text-align: center;
+      color: $font-color;
+      max-height: 120px;
+      min-width: 120px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      background: white;
+      border-radius: 8px;
+
+      &:hover {
+        background-color: $background-hover;
+        cursor: pointer;
+        color: $color-hover;
+      }
+
+      h4 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+      }
+    }
+  }
 }
-[class*='col-']:last-of-type {
-  padding-right: 0;
-}
+
 a {
   text-decoration: none;
 }
-*, *:after, *:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+
 h3 {
   text-align: center;
-  margin-bottom: 0;
 }
-h4 {
-  position: relative;
-}
-.grid {
-  margin: 0;
-}
-.col-1-4 {
-  width: 25%;
-}
-.module {
-  padding: 20px;
-  text-align: center;
-  color: #eee;
-  max-height: 120px;
-  min-width: 120px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  background: white;
-  color: #888;
-  border-radius: 2px;
-}
-.module:hover {
-  background-color: #eee;
-  cursor: pointer;
-  color: #607d8b;
-}
-.grid-pad {
-  padding: 10px 0;
-}
-.grid-pad > [class*='col-']:last-of-type {
-  padding-right: 20px;
-}
-@media (max-width: 600px) {
-  .module {
-    font-size: 10px;
-    max-height: 75px; }
-}
-@media (max-width: 1024px) {
+
+@media (max-width: 860px) {
   .grid {
-    margin: 0;
+
+    > * {
+      flex: 0 0 50%;
+      max-width: calc(50% - 20px);
+
+      &:last-child {
+        margin: 0;
+      }
+    }
   }
-  .module {
-    min-width: 60px;
+}
+
+@media (max-width: 568px) {
+  .grid {
+
+    > * {
+      flex: 0 0 100%;
+      max-width: initial;
+    }
   }
 }
