@@ -29,3 +29,5 @@ Acesse `http://localhost:4200/`
 `$ npm run build:ssr`
 
 `$ npm run serve:ssr`
+
+Acesse `http://localhost:4000/`
