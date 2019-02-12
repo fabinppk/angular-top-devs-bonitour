@@ -18,10 +18,10 @@ import { HttpClientModule } from '@angular/common/http';
     DashboardComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'first-app'}),
     FormsModule,
     AppRoutingModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [
     // no need to place any providers due to the `providedIn` flag...

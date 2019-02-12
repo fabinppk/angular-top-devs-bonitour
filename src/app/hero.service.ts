@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Hero } from './hero';
-import { HEROES } from './mock-heroes';
 import { MessageService } from './message.service';
 
 @Injectable({
@@ -27,26 +26,11 @@ export class HeroService {
     return this.http.get<Hero[]>(apiUrl, {headers});
   }
 
-  getHeroes(): Observable<Hero[]> {
-    return of(HEROES);
-  }
-
   getResourceHero(nome: string){
     const apiUrlDev = `https://api.bonitour.com.br/api/v3/dev/${nome}`;
     const nomeNoSlug = `${nome}`.replace('-', ' ').toUpperCase();
     this.messageService.add(`Get ${nomeNoSlug}`);
     const headers = this.setHeaders();
     return this.http.get<Hero[]>(apiUrlDev, {headers});
-  }
-
-  getHero(id: number): Observable<Hero> {
-    this.messageService.add(`id=${id}`);
-    return of(HEROES.find(hero => hero.id === id));
-  }
-
-  onSelect(hero): Observable<Hero[]> {
-    let msg = 'Clicked on ' + hero.name;
-    this.messageService.add(msg);
-    return of(HEROES);
   }
 }
