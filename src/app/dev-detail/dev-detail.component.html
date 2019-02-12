@@ -1,0 +1,10 @@
+<div *ngIf="dev" class="block-hero">
+  <div class="hero">
+    <h2 class="nome">{{ dev.nome }}</h2>
+    <p class="id">ID: {{dev.id}}</p>
+    <img src="{{ this.devImage(dev.arquivo_assinatura) }}" alt="{{ dev.nome }}">
+    <p class="cargo">{{dev.cargo_descricao }}</p>
+    <p class="email">{{dev.email }}</p>
+  </div>
+  <button (click)="goBack()">Voltar</button>
+</div>

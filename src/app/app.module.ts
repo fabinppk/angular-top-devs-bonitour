@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-import { HeroesComponent } from './heroes/heroes.component';
+import { DevDetailComponent } from './dev-detail/dev-detail.component';
+import { DevsComponent } from './devs/devs.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,8 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent,
-    HeroDetailComponent,
+    DevsComponent,
+    DevDetailComponent,
     MessagesComponent,
     DashboardComponent
   ],
@@ -24,7 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    // no need to place any providers due to the `providedIn` flag...
+
   ],
   bootstrap: [ AppComponent ]
 })

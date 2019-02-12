@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
+import { Dev } from '../dev';
+import { DevService } from '../dev.service';
 import { Meta, Title } from "@angular/platform-browser";
 
 @Component({
-  selector: 'app-heroes',
-  templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.scss']
+  selector: 'app-devs',
+  templateUrl: './devs.component.html',
+  styleUrls: ['./devs.component.scss']
 })
-export class HeroesComponent implements OnInit {
+export class DevsComponent implements OnInit {
 
-  heroes: Hero[];
+  devs: Dev[];
 
   constructor(
-    private heroService: HeroService,
+    private devService: DevService,
     meta: Meta,
     title: Title
   ) {
@@ -35,8 +35,8 @@ export class HeroesComponent implements OnInit {
   }
 
   getResources() {
-    this.heroService.getResources().subscribe((heroes) => {
-      this.heroes = heroes["devs"];
+    this.devService.getResources().subscribe((devs) => {
+      this.devs = devs["devs"];
     });
   }
 }

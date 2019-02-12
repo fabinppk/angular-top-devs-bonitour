@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
+import { Dev } from '../dev';
+import { DevService } from '../dev.service';
 import { Meta, Title } from "@angular/platform-browser";
 
 @Component({
@@ -9,10 +9,10 @@ import { Meta, Title } from "@angular/platform-browser";
   styleUrls: [ './dashboard.component.scss' ]
 })
 export class DashboardComponent implements OnInit {
-  heroes: Hero[] = [];
+  devs: Dev[] = [];
 
   constructor(
-    private heroService: HeroService,
+    private devService: DevService,
     meta: Meta,
     title: Title
   ) {
@@ -34,9 +34,9 @@ export class DashboardComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService.getResources()
-    .subscribe((heroes) => {
-      this.heroes = heroes["devs"].slice(2, 6)
+    this.devService.getResources()
+    .subscribe((devs) => {
+      this.devs = devs["devs"].slice(2, 6)
     });
   }
 }
