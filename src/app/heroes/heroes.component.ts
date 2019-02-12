@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
+import { Meta, Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-heroes',
@@ -11,7 +12,19 @@ export class HeroesComponent implements OnInit {
 
   heroes: Hero[];
 
-  constructor(private heroService: HeroService) { }
+  constructor(
+    private heroService: HeroService,
+    meta: Meta,
+    title: Title
+  ) {
+    title.setTitle('Lista de Desenvolvedores - Desenvolvedores Bonitour');
+
+    meta.addTags([
+      { name: 'author',   content: 'Fabiano Correia'},
+      { name: 'keywords', content: 'angular seo, angular 7 universal, desenvolvedores, bonitour'},
+      { name: 'description', content: 'Lista de Desenvolvedores Bonitour com Angular 7 + SEO' }
+    ]);
+  }
 
   ngOnInit() {
     this.getResources();

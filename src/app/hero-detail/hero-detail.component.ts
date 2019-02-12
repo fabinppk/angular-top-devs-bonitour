@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Hero } from '../hero';
 import { HeroService }  from '../hero.service';
+import { Meta, Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-hero-detail',
@@ -15,8 +16,10 @@ export class HeroDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
-    private location: Location
-  ) {}
+    private location: Location,
+    private meta: Meta,
+    private title: Title
+  ) { }
 
   ngOnInit() {
     this.getHero();
@@ -26,6 +29,13 @@ export class HeroDetailComponent implements OnInit {
     const nome = this.route.snapshot.paramMap.get('nome');
     this.heroService.getResourceHero(nome).subscribe(hero => {
       this.hero = hero["dev"];
+
+      this.title.setTitle(`${this.hero.nome} - Desenvolvedor Bonitour`);
+      this.meta.addTags([
+        { name: 'author',   content: 'Fabiano Correia'},
+        { name: 'keywords', content: 'angular seo, angular 7 universal, desenvolvedores, bonitour'},
+        { name: 'description', content: `${this.hero.nome} - Desenvolvedor Bonitour com Angular 7 + SEO` }
+      ]);
     });
   }
 
